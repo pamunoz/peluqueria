@@ -44,15 +44,15 @@ public class Appointment {
     private Date mDateCreated;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_created")
+    @JoinColumn(name = "employee_created", nullable = true)
     private Employee mEmployeeCreated;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "client_id")
+    @JoinColumn(name = "client_id", nullable = true)
     private Client mClient;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_id")
+    @JoinColumn(name = "employee_id", nullable = true)
     private Employee mEmployee;
     
     @Column(name = "client_name")

@@ -55,5 +55,7 @@ Contributor(s):
         
     <mapping class="com.pfariasmunoz.hairdresser.model.entities.Employee"></mapping>
     <mapping class="com.pfariasmunoz.hairdresser.model.entities.Schedule"></mapping>
+    <mapping class="com.pfariasmunoz.hairdresser.model.entities.Appointment"></mapping>
+    <mapping class="com.pfariasmunoz.hairdresser.model.entities.Client"></mapping>
   </session-factory>
 </hibernate-configuration>

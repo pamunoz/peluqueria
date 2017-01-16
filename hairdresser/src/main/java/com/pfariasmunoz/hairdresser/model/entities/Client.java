@@ -39,11 +39,11 @@ public class Client {
     @Column(name = "client_name")
     private String mName;
     
-    @Column(name = "contact_movile")
+    @Column(name = "contact_movile", nullable = true)
     private String mMovile;
     
-    @Column(name = "contact_phone")
-    private String mPhone;
+    @Column(name = "contact_mail", nullable = true)
+    private String mMail;
     
     @OneToMany(mappedBy = "mClient")
     private List<Appointment> mAppointmentList;
@@ -76,12 +76,12 @@ public class Client {
         this.mMovile = mMovile;
     }
 
-    public String getmPhone() {
-        return mPhone;
+    public String getmMail() {
+        return mMail;
     }
 
-    public void setmPhone(String mPhone) {
-        this.mPhone = mPhone;
+    public void setmMail(String mMail) {
+        this.mMail = mMail;
     }
 
     public List<Appointment> getmAppointmentList() {
