@@ -16,14 +16,19 @@
  */
 package com.pfariasmunoz.hairdresser.model.entities;
 
+import com.pfariasmunoz.hairdresser.model.util.Contract.AppointmentEntity;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.hibernate.annotations.Type;
 
@@ -32,64 +37,71 @@ import org.hibernate.annotations.Type;
  * @author pablo
  */
 @Entity
-@Table(name = "appointment")
+@Table(name = AppointmentEntity.TABLE_NAME)
 public class Appointment {
     
-    @Id
-    @Column(name = "id")
+    @Id @GeneratedValue
+    @Column(name = AppointmentEntity.ID)
     private long mId;
     
-    @Column(name = "date_created")
+    @Column(name = AppointmentEntity.DATE_CREATED_COLUMN)
     @Type(type = "date")
     private Date mDateCreated;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_created", nullable = true)
+    @JoinColumn(name = AppointmentEntity.EMPLOYEE_CREATED_FK, nullable = true)
     private Employee mEmployeeCreated;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "client_id", nullable = true)
+    @JoinColumn(name = AppointmentEntity.CLIENT_FK, nullable = true)
     private Client mClient;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_id", nullable = true)
+    @JoinColumn(name = AppointmentEntity.EMPLOYEE_FK, nullable = true)
     private Employee mEmployee;
     
-    @Column(name = "client_name")
+    @Column(name = AppointmentEntity.CLIENT_NAME_COLUMN)
     private String mClientName;
     
-    @Column(name ="client_contact")
+    @Column(name = AppointmentEntity.CLIENT_CONTACT_COLUMN)
     private String mClientContact;
     
-    @Column(name = "start_time")
+    @Column(name = AppointmentEntity.START_TIME_COLUMN)
     @Type(type = "timestamp")
     private Date mStartTime;
     
-    @Column(name = "end_time_expected")
+    @Column(name = AppointmentEntity.END_TIME_EXPECTED_COLUMN)
     @Type(type = "timestamp")
     private Date mEndTimeExpected;
     
-    @Column(name = "end_time", nullable = true)
+    @Column(name = AppointmentEntity.END_TIME_COLUMN, nullable = true)
     @Type(type = "timestamp")
     private Date mEndTime;
     
-    @Column(name = "price_expected")
+    @Column(name = AppointmentEntity.PRICE_EXPECTED_COLUMN)
     private BigDecimal mPriceExpected;
     
-    @Column(name = "price_full", nullable = true)
+    @Column(name = AppointmentEntity.PRICE_FULL_COLUMN, nullable = true)
     private BigDecimal mPriceFull;
     
-    @Column(name = "discount", nullable = true)
+    @Column(name = AppointmentEntity.DISCOUNT_COLUMN, nullable = true)
     private BigDecimal mDiscount;
     
-    @Column(name = "price_final", nullable = true)
+    @Column(name = AppointmentEntity.PRICE_FINAL_COLUMN, nullable = true)
     private BigDecimal mPriceFinal;
     
-    @Column(name = "canceled")
+    @Column(name = AppointmentEntity.CANCELED_COLUMN)
     private boolean mCanceled;
     
-    @Column(name = "cancellation_reason", nullable = true)
+    @Column(name = AppointmentEntity.CANCELATION_REASON_COLUMN, nullable = true)
     private String mCancellationReason;
+    
+    @OneToMany(mappedBy = "mAppointment")
+    private List<ServiceBooked> mServicesBookedList;
+
+    public Appointment() {
+        mServicesBookedList = new ArrayList<>();
+    }
 
     public long getmId() {
         return mId;
@@ -218,5 +230,15 @@ public class Appointment {
     public void setmEmployee(Employee mEmployee) {
         this.mEmployee = mEmployee;
     }
+
+    public List<ServiceBooked> getmServicesBookedList() {
+        return mServicesBookedList;
+    }
+
+    public void setmServicesBookedList(List<ServiceBooked> mServicesBookedList) {
+        this.mServicesBookedList = mServicesBookedList;
+    }
+    
+    
     
 }

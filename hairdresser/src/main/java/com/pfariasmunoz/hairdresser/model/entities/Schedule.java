@@ -5,6 +5,7 @@
  */
 package com.pfariasmunoz.hairdresser.model.entities;
 
+import com.pfariasmunoz.hairdresser.model.util.Contract.ScheduleEntity;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,19 +20,21 @@ import javax.persistence.Table;
  * @author pablo
  */
 @Entity
-@Table(name = "schedule")
+@Table(name = ScheduleEntity.TABLE_NAME)
 public class Schedule {
     
     @Id
-    @Column(name = "id")
+    @Column(name = ScheduleEntity.ID)
     private  long mId;
     
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "employee_id")
+    @JoinColumn(name = ScheduleEntity.EMPLOYEE_FK)
     private Employee mEmployee;
     
+    @Column(name = ScheduleEntity.FROM_COLUMN)
     private Date mFrom;
     
+    @Column(name = ScheduleEntity.TO_COLUMN)
     private Date mTo;
 
     public Schedule() {

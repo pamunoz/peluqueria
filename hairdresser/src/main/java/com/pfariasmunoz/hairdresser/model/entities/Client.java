@@ -16,6 +16,7 @@
  */
 package com.pfariasmunoz.hairdresser.model.entities;
 
+import com.pfariasmunoz.hairdresser.model.util.Contract.ClientEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -29,20 +30,20 @@ import javax.persistence.Table;
  * @author pablo
  */
 @Entity
-@Table(name = "client")
+@Table(name = ClientEntity.TABLE_NAME)
 public class Client {
     
     @Id
-    @Column(name = "id")
+    @Column(name = ClientEntity.ID)
     private long mId;
     
-    @Column(name = "client_name")
+    @Column(name = ClientEntity.NAME_COLUMN)
     private String mName;
     
-    @Column(name = "contact_movile", nullable = true)
+    @Column(name = ClientEntity.CONTACT_MOBILE_COLUMN, nullable = true)
     private String mMovile;
     
-    @Column(name = "contact_mail", nullable = true)
+    @Column(name = ClientEntity.CONTACT_MAIL_COLUMN, nullable = true)
     private String mMail;
     
     @OneToMany(mappedBy = "mClient")

@@ -1,5 +1,6 @@
 package com.pfariasmunoz.hairdresser.model.entities;
 
+import com.pfariasmunoz.hairdresser.model.util.Contract.EmployeeEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -17,17 +18,17 @@ import javax.persistence.Table;
  * 
  */
 @Entity
-@Table(name = "employee")
+@Table(name = EmployeeEntity.TABLE_NAME)
 public class Employee {
     
     @Id
-    @Column(name = "id")
+    @Column(name = EmployeeEntity.ID)
     private long mId;
     
-    @Column(name = "first_name")
+    @Column(name = EmployeeEntity.FIRST_NAME_COLUMN)
     private String mFirstName;
     
-    @Column(name = "last_name")
+    @Column(name = EmployeeEntity.LAST_NAME_COLUMN)
     private String mLastName;
     
     @OneToMany(mappedBy = "mEmployee")
