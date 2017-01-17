@@ -47,7 +47,7 @@ public class Employee implements Serializable {
 
     @Override
     public String toString() {
-        return "Employee{" + "Id=" + mId + ", firstName=" + mFirstName + ", lastName=" + mLastName + ", birthDate=" + mBirthDate + '}';
+        return "Employee {" + "Id=" + mId + ", firstName=" + mFirstName + ", lastName=" + mLastName + ", birthDate=" + mBirthDate + '}';
     }
 
     public Long getmId() {
@@ -81,6 +81,5 @@ public class Employee implements Serializable {
     public void setmBirthDate(Date mBirthDate) {
         this.mBirthDate = mBirthDate;
     }
-    
-        
+           
 }

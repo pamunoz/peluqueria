@@ -5,7 +5,10 @@
              http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
              version="2.0" xmlns="http://java.sun.com/xml/ns/persistence">
 
-    <persistence-unit name="aplicacion">
+    <persistence-unit name="application">
+        
+        <class>com.pfariasmunoz.hibernatejpaexample.model.Employee</class>
+        
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
             <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:test" />
@@ -17,3 +20,4 @@
     </persistence-unit>
 
 </persistence>
+
