@@ -47,7 +47,7 @@ public class Appointment {
     private long mId;
     
     @Column(name = AppointmentEntity.DATE_CREATED_COLUMN)
-    @Type(type = "date")
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date mDateCreated;
     
     @ManyToOne(fetch = FetchType.LAZY)

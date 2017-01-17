@@ -4,6 +4,7 @@ import com.pfariasmunoz.hairdresser.model.util.Contract.EmployeeEntity;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -36,12 +37,12 @@ public class Employee implements Serializable {
     private List<Schedule> mScheduleList;
     
     // for the foreing key for employee_created
-    @OneToMany(mappedBy = "mEmployeeCreated")
-    private List<Schedule> mAppointmentsMadeList;
+    @OneToMany(mappedBy = "mEmployeeCreated", cascade = CascadeType.PERSIST)
+    private List<Appointment> mAppointmentsMadeList;
     
     // for the foreing key employee_id
     @OneToMany(mappedBy = "mEmployee")
-    private List<Schedule> mAppointmentList;
+    private List<Appointment> mAppointmentList;
 
     public Employee() {
         mScheduleList = new ArrayList<>();
@@ -89,19 +90,19 @@ public class Employee implements Serializable {
         this.mScheduleList = mScheduleList;
     }
 
-    public List<Schedule> getmAppointmentsMadeList() {
+    public List<Appointment> getmAppointmentsMadeList() {
         return mAppointmentsMadeList;
     }
 
-    public void setmAppointmentsMadeList(List<Schedule> mAppointmentsMadeList) {
+    public void setmAppointmentsMadeList(List<Appointment> mAppointmentsMadeList) {
         this.mAppointmentsMadeList = mAppointmentsMadeList;
     }
 
-    public List<Schedule> getmAppointmentList() {
+    public List<Appointment> getmAppointmentList() {
         return mAppointmentList;
     }
 
-    public void setmAppointmentList(List<Schedule> mAppointmentList) {
+    public void setmAppointmentList(List<Appointment> mAppointmentList) {
         this.mAppointmentList = mAppointmentList;
     }
     
