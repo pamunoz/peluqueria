@@ -98,9 +98,13 @@ public class Appointment {
     
     @OneToMany(mappedBy = "mAppointment")
     private List<ServiceBooked> mServicesBookedList;
+    
+    @OneToMany(mappedBy = "mAppointment")
+    private List<ServiceProvided> mServicesProvidedList;
 
     public Appointment() {
-        mServicesBookedList = new ArrayList<>();
+        this.mServicesBookedList = new ArrayList<>();
+        this.mServicesProvidedList = new ArrayList<>();
     }
 
     public long getmId() {
@@ -238,7 +242,13 @@ public class Appointment {
     public void setmServicesBookedList(List<ServiceBooked> mServicesBookedList) {
         this.mServicesBookedList = mServicesBookedList;
     }
-    
-    
+
+    public List<ServiceProvided> getmServicesProvidedList() {
+        return mServicesProvidedList;
+    }
+
+    public void setmServicesProvidedList(List<ServiceProvided> mServicesProvidedList) {
+        this.mServicesProvidedList = mServicesProvidedList;
+    }
     
 }

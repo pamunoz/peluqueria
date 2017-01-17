@@ -93,6 +93,10 @@ public class Contract {
     }
     
     public static class ServiceProvidedEntity {
-        
+        public static final String TABLE_NAME = "service_provided"; 
+        public static final String ID = "id"; 
+        public static final String APPOINTMENT_FK = "appointment_id"; 
+        public static final String SERVICE_FK = "service_id"; 
+        public static final String PRICE_COLUMN = "price"; 
     }
 }

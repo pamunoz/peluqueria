@@ -50,9 +50,13 @@ public class Service {
     
     @OneToMany(mappedBy = "mService")
     List<ServiceBooked> mServiceBookedList;
+    
+    @OneToMany(mappedBy = "mService")
+    List<ServiceProvided> mServicesProvidedList;
 
     public Service() {
         this.mServiceBookedList = new ArrayList<>();
+        this.mServicesProvidedList = new ArrayList<>();
     }    
 
     public long getmId() {
@@ -94,7 +98,13 @@ public class Service {
     public void setmServiceBookedList(List<ServiceBooked> mServiceBookedList) {
         this.mServiceBookedList = mServiceBookedList;
     }
-    
-    
+
+    public List<ServiceProvided> getmServicesProvidedList() {
+        return mServicesProvidedList;
+    }
+
+    public void setmServicesProvidedList(List<ServiceProvided> mServicesProvidedList) {
+        this.mServicesProvidedList = mServicesProvidedList;
+    }
     
 }
