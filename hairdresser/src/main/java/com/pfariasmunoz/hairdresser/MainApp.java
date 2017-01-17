@@ -1,5 +1,6 @@
 package com.pfariasmunoz.hairdresser;
 
+import com.pfariasmunoz.hairdresser.model.util.HibernateUtil;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -31,6 +32,16 @@ public class MainApp extends Application {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        HibernateUtil hibernateUtil = new HibernateUtil();
+        
+        try {
+            hibernateUtil.setUp();
+            hibernateUtil.testBasicUsage();
+        } catch (Exception e) {
+            hibernateUtil.finishTransaction();
+        }
+        
         launch(args);
     }
 
