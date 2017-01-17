@@ -1,6 +1,7 @@
 package com.pfariasmunoz.hairdresser.model.entities;
 
 import com.pfariasmunoz.hairdresser.model.util.Contract.EmployeeEntity;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
@@ -19,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = EmployeeEntity.TABLE_NAME)
-public class Employee {
+public class Employee implements Serializable {
     
     @Id
     @Column(name = EmployeeEntity.ID)

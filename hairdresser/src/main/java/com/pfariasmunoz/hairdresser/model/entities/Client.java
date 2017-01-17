@@ -50,8 +50,14 @@ public class Client {
     private List<Appointment> mAppointmentList;
 
     public Client() {
-        this.mAppointmentList = new ArrayList<Appointment>();
+        this.mAppointmentList = new ArrayList<>();
     }
+    
+    public Client(String name) {
+        this.mName = name;
+        this.mAppointmentList = new ArrayList<>();
+    }
+    
 
     public long getmId() {
         return mId;

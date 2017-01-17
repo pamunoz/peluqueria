@@ -30,6 +30,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import org.hibernate.annotations.Type;
 
 /**
@@ -67,15 +69,15 @@ public class Appointment {
     private String mClientContact;
     
     @Column(name = AppointmentEntity.START_TIME_COLUMN)
-    @Type(type = "timestamp")
+    @Temporal(TemporalType.TIME)
     private Date mStartTime;
     
     @Column(name = AppointmentEntity.END_TIME_EXPECTED_COLUMN)
-    @Type(type = "timestamp")
+    @Temporal(TemporalType.TIME)
     private Date mEndTimeExpected;
     
     @Column(name = AppointmentEntity.END_TIME_COLUMN, nullable = true)
-    @Type(type = "timestamp")
+    @Temporal(TemporalType.TIME)
     private Date mEndTime;
     
     @Column(name = AppointmentEntity.PRICE_EXPECTED_COLUMN)
